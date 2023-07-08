@@ -1,2 +1,3 @@
 # react-ecommerce-template
-Build Ecommerce template using CRA
+
+Build Ecommerce template using CRA, Antd
