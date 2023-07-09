@@ -24,8 +24,6 @@ const items = [
   },
 ];
 
-const BreadcrumbContainer = () => {
+export const BreadcrumbContainer = () => {
   return <Breadcrumb className="breadcrumb" items={items}></Breadcrumb>;
 };
-
-export default BreadcrumbContainer;

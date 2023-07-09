@@ -1,7 +1,7 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Input } from "antd";
 
-const Store = () => {
+export const Shop = () => {
   return (
     <div className="banner">
       <Input
@@ -12,5 +12,3 @@ const Store = () => {
     </div>
   );
 };
-
-export default Store;

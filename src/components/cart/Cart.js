@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Button, Modal, Badge } from "antd";
 import { ShoppingCartOutlined, RightOutlined } from "@ant-design/icons";
 
-const Cart = () => {
+export const Cart = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(5);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -20,18 +20,24 @@ const Cart = () => {
 
   return (
     <>
-      <Badge count={count}>
-        <Button className="cart-button" type="primary" onClick={showModal}>
+      <Button
+        className="cart-button"
+        size="large"
+        type="primary"
+        onClick={showModal}
+      >
+        <Badge size="small" color="#faad14" count={count}>
           <ShoppingCartOutlined />
-          Checkout
-          <RightOutlined />
-        </Button>
-      </Badge>
+        </Badge>
+        Checkout
+        <RightOutlined />
+      </Button>
       <Modal
         title="My cart"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
+        wrapClassName="cart-modal"
         style={{
           top: 0,
           right: 0,
@@ -40,12 +46,8 @@ const Cart = () => {
           paddingBottom: 0,
         }}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <>Products added to cart</>
       </Modal>
     </>
   );
 };
-
-export default Cart;

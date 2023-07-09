@@ -1,6 +1,6 @@
 import { Layout, ConfigProvider } from "antd";
 
-const LayoutContainer = ({ children }) => {
+export const LayoutContainer = ({ children }) => {
   return (
     <>
       <ConfigProvider
@@ -15,5 +15,3 @@ const LayoutContainer = ({ children }) => {
     </>
   );
 };
-
-export default LayoutContainer;

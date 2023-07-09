@@ -1,7 +1,7 @@
 import { Layout, Col, Row, Input, Select, Dropdown, Space } from "antd";
 import { DownOutlined, HeartTwoTone } from "@ant-design/icons";
 import LOGO_URL from "../../assets/Logo.png";
-import Cart from "../cart/Cart";
+import { Cart } from "../cart/Cart";
 
 const { Header } = Layout;
 const { Search } = Input;
@@ -43,7 +43,7 @@ const accountMenuLinks = [
   },
 ];
 
-const HeaderContainer = () => {
+export const HeaderContainer = () => {
   const onSearch = () => {};
 
   return (
@@ -109,5 +109,3 @@ const HeaderContainer = () => {
     </>
   );
 };
-
-export default HeaderContainer;

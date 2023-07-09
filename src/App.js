@@ -1,11 +1,11 @@
 import { Layout } from "antd";
 import "./App.css";
-import LayoutContainer from "./components/layout/Layout";
-import HeaderContainer from "./components/layout/Header";
-import FooterContainer from "./components/layout/Footer";
-import BreadcrumbContainer from "./components/common/Breadcrumb";
-import ProductList from "./components/product/ProductList";
-import Store from "./components/store/Store";
+import { LayoutContainer } from "./components/layout/Layout";
+import { HeaderContainer } from "./components/layout/Header";
+import { FooterContainer } from "./components/layout/Footer";
+import { BreadcrumbContainer } from "./components/common/Breadcrumb";
+import { ProductList } from "./components/product/ProductList";
+import { Shop } from "./components/shop/Shop";
 
 const { Content } = Layout;
 
@@ -15,7 +15,7 @@ export default function App() {
       <LayoutContainer>
         <HeaderContainer />
         <BreadcrumbContainer />
-        <Store />
+        <Shop />
         <Content className="content">
           <ProductList />
         </Content>
