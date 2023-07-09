@@ -1,13 +1,10 @@
-import { Card, Button } from "antd";
+import { Card } from "antd";
 import { useContext } from "react";
-import { ModalContext } from "./ProductList";
+import { ProductDetailsContext } from "./ProductList";
+import { AddProductButton } from "../common/AddProductButton";
 
 export const Product = ({ product, handleProductView }) => {
-  const [productDetails, setproductDetails] = useContext(ModalContext);
-
-  const handleClick = () => {
-    console.log("add");
-  };
+  const [productDetails, setproductDetails] = useContext(ProductDetailsContext);
 
   const getProductView = () => {
     setproductDetails(product);
@@ -30,9 +27,7 @@ export const Product = ({ product, handleProductView }) => {
           {product.title}
         </div>
         <div className="product-price">&#8377; {product.price}</div>
-        <Button className="product-add" block onClick={handleClick}>
-          Add
-        </Button>
+        <AddProductButton />
       </Card>
     </div>
   );

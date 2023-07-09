@@ -1,3 +1,4 @@
+import { useState, createContext } from "react";
 import { Layout } from "antd";
 import "./App.css";
 import { LayoutContainer } from "./components/layout/Layout";
@@ -6,21 +7,33 @@ import { FooterContainer } from "./components/layout/Footer";
 import { BreadcrumbContainer } from "./components/common/Breadcrumb";
 import { ProductList } from "./components/product/ProductList";
 import { Shop } from "./components/shop/Shop";
+import { Banner } from "./components/common/Banner";
 
 const { Content } = Layout;
 
+export const ProductsContext = createContext();
+export const SearchContext = createContext();
+
 export default function App() {
+  const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState("");
+
   return (
     <>
-      <LayoutContainer>
-        <HeaderContainer />
-        <BreadcrumbContainer />
-        <Shop />
-        <Content className="content">
-          <ProductList />
-        </Content>
-        <FooterContainer />
-      </LayoutContainer>
+      <ProductsContext.Provider value={[products, setProducts]}>
+        <SearchContext.Provider value={[search, setSearch]}>
+          <LayoutContainer>
+            <HeaderContainer />
+            <BreadcrumbContainer />
+            <Shop />
+            <Content className="content">
+              {search === "" ? <Banner /> : null}
+              <ProductList />
+            </Content>
+            <FooterContainer />
+          </LayoutContainer>
+        </SearchContext.Provider>
+      </ProductsContext.Provider>
     </>
   );
 }

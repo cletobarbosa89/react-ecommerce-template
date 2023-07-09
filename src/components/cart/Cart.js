@@ -4,7 +4,7 @@ import { ShoppingCartOutlined, RightOutlined } from "@ant-design/icons";
 
 export const Cart = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [count, setCount] = useState(5);
+  const [count, setCount] = useState(4);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -45,6 +45,8 @@ export const Cart = () => {
           height: "100%",
           paddingBottom: 0,
         }}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
       >
         <>Products added to cart</>
       </Modal>
