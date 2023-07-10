@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Button, Modal, Badge, List, Avatar } from "antd";
 import { ShoppingCartOutlined, RightOutlined } from "@ant-design/icons";
-// import { fetchProduct } from "../../services/productService";
+import { fetchProduct } from "../../services/productService";
 
 export const Cart = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,12 +24,11 @@ export const Cart = () => {
   // set cart data
   useEffect(() => {
     let data = [];
-    // cart.map(async (cart) => {
-    //   const product = await fetchProduct(cart.id);
-    //   console.log(product);
-    //   data.push(product);
-    //   return true;
-    // });
+    cart.map(async (cart) => {
+      const product = await fetchProduct(cart.id);
+      data.push(product);
+      return true;
+    });
 
     setCartData(data);
   }, [cart]);
@@ -42,7 +41,7 @@ export const Cart = () => {
         type="primary"
         onClick={showModal}
       >
-        <Badge size="small" color="#faad14" count={2} showZero>
+        <Badge size="small" color="#faad14" count={cart.length} showZero>
           <ShoppingCartOutlined />
         </Badge>
         Checkout

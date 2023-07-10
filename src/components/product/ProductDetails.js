@@ -83,7 +83,7 @@ export const ProductDetails = ({ isModalOpen, onCancel }) => {
                     <br />
                     {productDetails.description}
                   </div>
-                  <AddProductButton />
+                  <AddProductButton productId={productDetails.id} />
                 </>
               ) : null}
             </div>
