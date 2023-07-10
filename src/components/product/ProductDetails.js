@@ -8,6 +8,7 @@ export const ProductDetails = ({ isModalOpen, onCancel }) => {
   const [productDetails, setProductDetails] = useContext(ProductDetailsContext);
   const [productImages, setProductImages] = useContext(ProductImagesContext);
 
+  // Load product details
   const loadProductDetails = (open) => {
     if (open && productDetails) {
       let i = 0;

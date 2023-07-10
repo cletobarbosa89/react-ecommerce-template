@@ -11,6 +11,7 @@ export const Shop = () => {
   const [search, setSearch] = useContext(SearchContext);
   const [products, setProducts] = useContext(ProductsContext);
 
+  // Debouce user search input
   const debounce = (cb, delay = 1000) => {
     let timeout;
 
@@ -22,6 +23,7 @@ export const Shop = () => {
     };
   };
 
+  // product search
   const productSearch = useCallback(
     debounce(async (text) => {
       const products = await fetchAllProducts();
@@ -34,6 +36,7 @@ export const Shop = () => {
     []
   );
 
+  // On input change
   const handleChange = (e) => {
     setSearch(e.target.value);
     productSearch(e.target.value);

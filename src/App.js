@@ -8,6 +8,8 @@ import { BreadcrumbContainer } from "./components/common/Breadcrumb";
 import { ProductList } from "./components/product/ProductList";
 import { Shop } from "./components/shop/Shop";
 import { Banner } from "./components/common/Banner";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 const { Content } = Layout;
 
@@ -20,20 +22,22 @@ export default function App() {
 
   return (
     <>
-      <ProductsContext.Provider value={[products, setProducts]}>
-        <SearchContext.Provider value={[search, setSearch]}>
-          <LayoutContainer>
-            <HeaderContainer />
-            <BreadcrumbContainer />
-            <Shop />
-            <Content className="content">
-              {search === "" ? <Banner /> : null}
-              <ProductList />
-            </Content>
-            <FooterContainer />
-          </LayoutContainer>
-        </SearchContext.Provider>
-      </ProductsContext.Provider>
+      <Provider store={store}>
+        <ProductsContext.Provider value={[products, setProducts]}>
+          <SearchContext.Provider value={[search, setSearch]}>
+            <LayoutContainer>
+              <HeaderContainer />
+              <BreadcrumbContainer />
+              <Shop />
+              <Content className="content">
+                {search === "" ? <Banner /> : null}
+                <ProductList />
+              </Content>
+              <FooterContainer />
+            </LayoutContainer>
+          </SearchContext.Provider>
+        </ProductsContext.Provider>
+      </Provider>
     </>
   );
 }

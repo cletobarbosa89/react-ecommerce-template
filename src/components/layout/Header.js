@@ -6,6 +6,7 @@ import { Cart } from "../cart/Cart";
 const { Header } = Layout;
 const { Search } = Input;
 
+// Search categories
 const searchOptions = [
   {
     value: "all",
@@ -21,6 +22,7 @@ const searchOptions = [
   },
 ];
 
+// Location options
 const locationDropdowns = [
   {
     key: "1",
@@ -28,6 +30,7 @@ const locationDropdowns = [
   },
 ];
 
+// Account options
 const accountMenuLinks = [
   {
     key: "1",

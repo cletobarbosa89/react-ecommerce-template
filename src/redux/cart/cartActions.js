@@ -1,8 +1,9 @@
-import { ADD_ITEM } from "./cartTypes";
+import { UPDATE_CART } from "./cardTypes";
 
-export const add_item = (payload) => {
+// Update cart
+export const update_cart = (payload) => {
   return {
-    type: ADD_ITEM,
+    type: UPDATE_CART,
     payload: payload,
   };
 };

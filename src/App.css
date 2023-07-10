@@ -203,16 +203,31 @@ body {
   line-height: 30px;
 }
 
-.product-add {
+.product-add,
+.product-minus,
+.product-plus {
   border: 1px solid #b8238e;
   background-color: #fff;
   color: #b8238e;
 }
 
-.product-add:hover {
+.product-add:hover,
+.product-minus:hover,
+.product-plus:hover {
   border: 1px solid #b8238e !important;
   background-color: #b8238e;
   color: #fff !important;
+}
+
+.product-quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-quantity button,
+.product-quantity div {
+  flex: 1 1 100%;
 }
 
 .carousel-container .react-multiple-carousel__arrow::before {

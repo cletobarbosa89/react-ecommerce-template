@@ -6,6 +6,7 @@ import { AddProductButton } from "../common/AddProductButton";
 export const Product = ({ product, handleProductView }) => {
   const [productDetails, setproductDetails] = useContext(ProductDetailsContext);
 
+  // Get product details
   const getProductView = () => {
     setproductDetails(product);
     handleProductView();
@@ -27,7 +28,7 @@ export const Product = ({ product, handleProductView }) => {
           {product.title}
         </div>
         <div className="product-price">&#8377; {product.price}</div>
-        <AddProductButton />
+        <AddProductButton productId={product.id} />
       </Card>
     </div>
   );

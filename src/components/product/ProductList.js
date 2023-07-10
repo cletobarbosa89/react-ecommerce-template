@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, Suspense } from "react";
 import { Row, Col, Skeleton } from "antd";
 import { Product } from "./Product";
 import { fetchAllProducts } from "../../services/productService";
@@ -7,28 +7,10 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { ProductDetails } from "./ProductDetails";
 import { ProductsContext } from "../../App";
+import { responsive } from "../common/responsiveCarouselBreakpoints";
 
 export const ProductDetailsContext = createContext();
 export const ProductImagesContext = createContext();
-
-const responsive = {
-  superLargeDesktop: {
-    breakpoint: { max: 4000, min: 3000 },
-    items: 6,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 5,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
 
 export const ProductList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,16 +18,19 @@ export const ProductList = () => {
   const [productImages, setProductImages] = useState([]);
   const [products, setProducts] = useContext(ProductsContext);
 
+  // Open modal for product details
   const handleProductView = () => {
     setIsModalOpen(true);
   };
 
+  // Close modal
   const handleCancel = () => {
     setIsModalOpen(false);
     setProductDetails([]);
     setProductImages([]);
   };
 
+  // get products
   useEffect(() => {
     const getAllProducts = async () => {
       const products = await fetchAllProducts();
@@ -69,21 +54,23 @@ export const ProductList = () => {
             </Col>
             <Col span={24}>
               {products.length ? (
-                <Carousel
-                  responsive={responsive}
-                  containerClass="carousel-container"
-                  itemClass="product-item"
-                >
-                  {products.map((product, index) => {
-                    return (
-                      <Product
-                        key={index}
-                        product={product}
-                        handleProductView={handleProductView}
-                      />
-                    );
-                  })}
-                </Carousel>
+                <Suspense fallback={<Skeleton active />}>
+                  <Carousel
+                    responsive={responsive}
+                    containerClass="carousel-container"
+                    itemClass="product-item"
+                  >
+                    {products.map((product, index) => {
+                      return (
+                        <Product
+                          key={index}
+                          product={product}
+                          handleProductView={handleProductView}
+                        />
+                      );
+                    })}
+                  </Carousel>
+                </Suspense>
               ) : (
                 <>
                   <Skeleton active />
