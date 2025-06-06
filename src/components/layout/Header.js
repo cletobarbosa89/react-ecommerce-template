@@ -1,6 +1,6 @@
 import { Layout, Col, Row, Input, Select, Dropdown, Space } from "antd";
 import { DownOutlined, HeartTwoTone } from "@ant-design/icons";
-import LOGO_URL from "../assets/logo.png";
+import LOGO_URL from "/assets/logo.png";
 import { Cart } from "../cart/Cart";
 
 const { Header } = Layout;
